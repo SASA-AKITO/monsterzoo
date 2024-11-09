@@ -1,4 +1,4 @@
-
+import java.util.stream.IntStream;
 
 public class Main {
 	static MonsterZoo pz = new MonsterZoo();
@@ -26,11 +26,10 @@ public class Main {
 
 		System.out.println("ボールがなくなった！");
 
-		for(int i=0;i<pz.getUserMonster().length;i++){
-			if(pz.getUserMonster()[i]!=null){
-				System.out.println(pz.getUserMonster()[i]+"を捕まえた．");
-			}
-		}
+		// for文を使わずにStreamを使用
+        IntStream.range(0, pz.getUserMonster().length)
+			.filter(i -> pz.getUserMonster()[i] != null)
+			.forEach(i -> System.out.println(pz.getUserMonster()[i]+"を捕まえた．"));
 	}
 
 	//テスト用のモンスターデータを登録するメソッド
